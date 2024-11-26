@@ -1,4 +1,4 @@
-import copy  # Import copy for deep copying game states
+import copy  #import copy for deep copying game
 
 def minimax(game, depth, maximizing_player, alpha=float('-inf'), beta=float('inf')):
     if depth == 0 or game.game_over:  #depth limit or game over
