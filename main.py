@@ -1,6 +1,5 @@
 # https://github.com/HarmoniaLeo/Mancala
 
-
 import pygame
 import sys
 from mancala_game import MancalaGame
