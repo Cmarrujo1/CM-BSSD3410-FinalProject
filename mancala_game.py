@@ -49,12 +49,6 @@ class MancalaGame:
         score_text = font.render(f"Player 1: {player1_score} | Player 2: {player2_score}", True, BLACK)
         screen.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, HEIGHT - 70))
 
-        #draw the restart button
-        restart_button = pygame.Rect(WIDTH // 2 - 50, HEIGHT - 40, 100, 30)  #position the button
-        pygame.draw.rect(screen, GREEN, restart_button)  #draw the button
-        restart_text = font.render("Restart", True, WHITE)  #text for the button
-        screen.blit(restart_text, (WIDTH // 2 - restart_text.get_width() // 2, HEIGHT - 35))  #render button text
-
         #display winner if game is over
         if self.game_over:
             font = pygame.font.SysFont("Arial", 32)
@@ -114,12 +108,6 @@ class MancalaGame:
 
     def handle_click(self, x, y):
         print(f"Mouse clicked at: ({x}, {y})")
-
-        restart_button = pygame.Rect(WIDTH // 2 - 50, HEIGHT - 40, 100, 30)
-        if restart_button.collidepoint(x, y):
-           print("Restart button clicked. Resetting game.")
-           self.reset()  #reset the game
-           return
 
         if self.game_over:
             print("Game is over. Click ignored.")
