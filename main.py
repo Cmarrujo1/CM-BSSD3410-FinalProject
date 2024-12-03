@@ -1,5 +1,6 @@
 # https://github.com/HarmoniaLeo/Mancala
 
+
 import pygame
 import sys
 from mancala_game import MancalaGame
@@ -22,28 +23,22 @@ def main():
                 pygame.quit()  #quit pygame
                 sys.exit()  #exit the program
 
-            if event.type == pygame.MOUSEBUTTONDOWN:  #mouse click events
-                x, y = event.pos  #position of the mouse click
-                game.handle_click(x, y)  #pass click to the game logic
-
         if game.game_over:  #if the game ends
             print(f"Game over. Winner: {game.winner}") #prints game over and who's the winner
             game.display_winner(screen)
             game.reset()  #reset the game state to start over
 
         if not game.game_over:  #game is still ongoing
-            if game.current_player == 1:
-                if game.use_minimax:
-                    _, move = minimax(game, 4, True)
-                else:
-                    move = greedy_move(game)
+            if game.current_player == 1:  #player 2 (Maximizing player)
+                _, move = minimax(game, 4, True)
+            else:  #player 1 (Minimizing player)
+                move = greedy_move(game)
 
-                if move is not None:
-                    game.make_move(move)
+            if move is not None:
+                game.make_move(move)
 
         game.render(screen)  #render the game
-        clock.tick(30)  #limit the frame
-
+        clock.tick(30)  #limit the frame rate
 
 if __name__ == "__main__":
     main()  #run the main function
